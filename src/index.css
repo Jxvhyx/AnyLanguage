@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Fredoka+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 100% 97%;
+    --foreground: 230 25% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 18%;
+
+    --primary: 262 72% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 173 58% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 45 30% 92%;
+    --muted-foreground: 230 10% 45%;
+
+    --accent: 35 95% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 15% 88%;
+    --input: 230 15% 88%;
+    --ring: 262 72% 55%;
+
+    --radius: 1rem;
+
+    --success: 145 63% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 35 95% 60%;
+    --warning-foreground: 230 25% 18%;
+
+    --info: 205 85% 55%;
+    --info-foreground: 0 0% 100%;
+
+    --sidebar-background: 262 72% 55%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 262 72% 55%;
+    --sidebar-accent: 262 60% 48%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 262 60% 48%;
+    --sidebar-ring: 0 0% 100%;
+
+    --font-display: 'Fredoka One', cursive;
+    --font-body: 'Nunito', sans-serif;
+
+    --gradient-fun: linear-gradient(135deg, hsl(262 72% 55%), hsl(205 85% 55%), hsl(173 58% 50%));
+    --gradient-warm: linear-gradient(135deg, hsl(35 95% 60%), hsl(0 72% 55%));
+    --gradient-cool: linear-gradient(135deg, hsl(205 85% 55%), hsl(173 58% 50%));
+    --shadow-card: 0 4px 20px -4px hsl(230 25% 18% / 0.08);
+    --shadow-elevated: 0 8px 30px -8px hsl(230 25% 18% / 0.12);
+  }
+
+  .dark {
+    --background: 230 25% 10%;
+    --foreground: 45 30% 95%;
+    --card: 230 20% 14%;
+    --card-foreground: 45 30% 95%;
+    --popover: 230 20% 14%;
+    --popover-foreground: 45 30% 95%;
+    --primary: 262 72% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 173 58% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 230 15% 20%;
+    --muted-foreground: 230 10% 60%;
+    --accent: 35 95% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 15% 22%;
+    --input: 230 15% 22%;
+    --ring: 262 72% 60%;
+    --sidebar-background: 262 50% 20%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 95%;
+    --sidebar-primary-foreground: 262 72% 55%;
+    --sidebar-accent: 262 40% 28%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 262 40% 28%;
+    --sidebar-ring: 0 0% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .gradient-fun {
+    background: var(--gradient-fun);
+  }
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+  .gradient-cool {
+    background: var(--gradient-cool);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+}
