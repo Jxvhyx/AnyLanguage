@@ -2,9 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import {
   LayoutDashboard, GraduationCap, FileText, Users,
-  BarChart3, LogOut, Dumbbell, Baby, Settings, BookOpen
+  BarChart3, LogOut, Dumbbell, Baby, Settings, BookOpen, Gamepad2
 } from "lucide-react";
 import logo from "@/assets/logo.png";
+
 
 const navByRole = {
   admin: [
@@ -14,6 +15,8 @@ const navByRole = {
     { to: "/lessons", icon: BookOpen, label: "Lessons" },
     { to: "/exercises", icon: Dumbbell, label: "Exercises" },
     { to: "/progress", icon: BarChart3, label: "Progress" },
+    { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
+    { to: "/minigames", icon: Gamepad2, label: "Minigames" },
     { to: "/reports", icon: FileText, label: "Reports" },
   ],
   teacher: [
@@ -22,20 +25,23 @@ const navByRole = {
     { to: "/exercises", icon: Dumbbell, label: "Exercises" },
     { to: "/students", icon: GraduationCap, label: "My Students" },
     { to: "/progress", icon: BarChart3, label: "Progress" },
+    { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
     { to: "/reports", icon: FileText, label: "Reports" },
   ],
   parent: [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
     { to: "/children", icon: Baby, label: "My Children" },
     { to: "/parent-progress", icon: BarChart3, label: "Progress" },
+    { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
     { to: "/reports", icon: FileText, label: "Reports" },
   ],
   student: [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
     { to: "/my-exercises", icon: Dumbbell, label: "My Exercises" },
     { to: "/lessons", icon: BookOpen, label: "Lessons" },
+    { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
     { to: "/progress", icon: BarChart3, label: "My Progress" },
-  ],
+    { to: "/minigames", icon: Gamepad2, label: "Minigames" }],
 };
 
 export default function AppSidebar() {
@@ -59,11 +65,10 @@ export default function AppSidebar() {
             <Link
               key={item.to}
               to={item.to}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-body font-semibold transition-all ${
-                active
-                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                  : "text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-              }`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-body font-semibold transition-all ${active
+                ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                : "text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                }`}
             >
               <item.icon className="w-5 h-5" />
               {item.label}

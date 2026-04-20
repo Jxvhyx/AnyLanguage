@@ -105,18 +105,35 @@ export default function Dashboard() {
               <a href="/lessons" className="px-4 py-2 rounded-xl bg-primary text-primary-foreground font-body font-bold hover:opacity-90 transition-opacity">
                 + New Lesson
               </a>
+
               <a href="/exercises" className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground font-body font-bold hover:opacity-90 transition-opacity">
                 + New Exercise
               </a>
+
               {role === "admin" && (
                 <a href="/users" className="px-4 py-2 rounded-xl bg-info text-info-foreground font-body font-bold hover:opacity-90 transition-opacity">
                   Manage Users
                 </a>
               )}
+
+              <a
+                href="/dictionary"
+                className="px-4 py-2 rounded-xl bg-accent text-accent-foreground font-body font-bold hover:opacity-90 transition-opacity"
+              >
+                📚 Diccionario
+              </a>
+
+              <a
+                href="/minigames"
+                className="px-4 py-2 rounded-xl bg-success text-success-foreground font-body font-bold hover:opacity-90 transition-opacity"
+              >
+                🎮 Minigames
+              </a>
+              
             </CardContent>
           </Card>
         )}
       </div>
-    </DashboardLayout>
+    </DashboardLayout >
   );
 }

@@ -20,6 +20,10 @@ import GroupsPage from "./pages/GroupsPage";
 import ParentProgressPage from "./pages/ParentProgressPage";
 import StudentExercisesPage from "./pages/StudentExercisesPage";
 import NotFound from "./pages/NotFound";
+import DictionaryPage from "./pages/DictionaryPage";
+import QuizPage from "./pages/QuizPage";
+import MiniGamesPage from "./pages/MiniGamesPage";
+import ImageGamePage from "./pages/ImageGamePage";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +49,10 @@ const App = () => (
             <Route path="/children" element={<ProtectedRoute allowedRoles={["parent"]}><ChildrenPage /></ProtectedRoute>} />
             <Route path="/parent-progress" element={<ProtectedRoute allowedRoles={["parent"]}><ParentProgressPage /></ProtectedRoute>} />
             <Route path="/my-exercises" element={<ProtectedRoute allowedRoles={["student"]}><StudentExercisesPage /></ProtectedRoute>} />
+            <Route path="/dictionary" element={<ProtectedRoute> <DictionaryPage /> </ProtectedRoute>} />
+            <Route path="/quiz" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
+            <Route path="/minigames" element={<ProtectedRoute><MiniGamesPage /></ProtectedRoute>} />
+            <Route path="/image-game" element={ <ProtectedRoute> <ImageGamePage /> </ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
