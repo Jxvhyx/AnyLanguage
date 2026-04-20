@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Users, BarChart3, Trophy, Dumbbell, Star, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 function StatCard({ icon: Icon, label, value, color }: { icon: any; label: string; value: string | number; color: string }) {
   return (
@@ -102,33 +103,33 @@ export default function Dashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
-              <a href="/lessons" className="px-4 py-2 rounded-xl bg-primary text-primary-foreground font-body font-bold hover:opacity-90 transition-opacity">
+              <link href="/lessons" className="px-4 py-2 rounded-xl bg-primary text-primary-foreground font-body font-bold hover:opacity-90 transition-opacity">
                 + New Lesson
-              </a>
+              </link>
 
-              <a href="/exercises" className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground font-body font-bold hover:opacity-90 transition-opacity">
+              <link href="/exercises" className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground font-body font-bold hover:opacity-90 transition-opacity">
                 + New Exercise
-              </a>
+              </link>
 
               {role === "admin" && (
-                <a href="/users" className="px-4 py-2 rounded-xl bg-info text-info-foreground font-body font-bold hover:opacity-90 transition-opacity">
+                <link href="/users" className="px-4 py-2 rounded-xl bg-info text-info-foreground font-body font-bold hover:opacity-90 transition-opacity">
                   Manage Users
-                </a>
+                </link>
               )}
 
-              <a
+              <link
                 href="/dictionary"
                 className="px-4 py-2 rounded-xl bg-accent text-accent-foreground font-body font-bold hover:opacity-90 transition-opacity"
               >
                 📚 Diccionario
-              </a>
+              </link>
 
-              <a
+              <link
                 href="/minigames"
                 className="px-4 py-2 rounded-xl bg-success text-success-foreground font-body font-bold hover:opacity-90 transition-opacity"
               >
                 🎮 Minigames
-              </a>
+              </link>
               
             </CardContent>
           </Card>
