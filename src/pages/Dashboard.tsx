@@ -27,18 +27,40 @@ export default function Dashboard() {
   const [stats, setStats] = useState({ lessons: 0, exercises: 0, students: 0, completed: 0 });
 
   useEffect(() => {
+    let mounted = true;
+
     const fetchStats = async () => {
-      const [lessonsRes, exercisesRes] = await Promise.all([
-        supabase.from("lessons").select("id", { count: "exact", head: true }),
-        supabase.from("exercises").select("id", { count: "exact", head: true }),
-      ]);
-      setStats(s => ({
-        ...s,
-        lessons: lessonsRes.count || 0,
-        exercises: exercisesRes.count || 0,
-      }));
+      try {
+        const [lessonsRes, exercisesRes] = await Promise.all([
+          supabase.from("lessons").select("id", { count: "exact", head: true }),
+          supabase.from("exercises").select("id", { count: "exact", head: true }),
+        ]);
+
+        if (lessonsRes.error) {
+          console.error("Error loading lessons stats:", lessonsRes.error);
+        }
+
+        if (exercisesRes.error) {
+          console.error("Error loading exercises stats:", exercisesRes.error);
+        }
+
+        if (!mounted) return;
+
+        setStats((s) => ({
+          ...s,
+          lessons: lessonsRes.count ?? 0,
+          exercises: exercisesRes.count ?? 0,
+        }));
+      } catch (error) {
+        console.error("Dashboard fetchStats failed:", error);
+      }
     };
+
     fetchStats();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const greeting = () => {
@@ -103,34 +125,43 @@ export default function Dashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
-              <link href="/lessons" className="px-4 py-2 rounded-xl bg-primary text-primary-foreground font-body font-bold hover:opacity-90 transition-opacity">
+              <Link
+                to="/lessons"
+                className="px-4 py-2 rounded-xl bg-primary text-primary-foreground font-body font-bold hover:opacity-90 transition-opacity"
+              >
                 + New Lesson
-              </link>
+              </Link>
 
-              <link href="/exercises" className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground font-body font-bold hover:opacity-90 transition-opacity">
+              <Link
+                to="/exercises"
+                className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground font-body font-bold hover:opacity-90 transition-opacity"
+              >
                 + New Exercise
-              </link>
+              </Link>
 
               {role === "admin" && (
-                <link href="/users" className="px-4 py-2 rounded-xl bg-info text-info-foreground font-body font-bold hover:opacity-90 transition-opacity">
+                <Link
+                  to="/users"
+                  className="px-4 py-2 rounded-xl bg-info text-info-foreground font-body font-bold hover:opacity-90 transition-opacity"
+                >
                   Manage Users
-                </link>
+                </Link>
               )}
 
-              <link
-                href="/dictionary"
+              <Link
+                to="/dictionary"
                 className="px-4 py-2 rounded-xl bg-accent text-accent-foreground font-body font-bold hover:opacity-90 transition-opacity"
               >
                 📚 Diccionario
-              </link>
+              </Link>
 
-              <link
-                href="/minigames"
+              <Link
+                to="/minigames"
                 className="px-4 py-2 rounded-xl bg-success text-success-foreground font-body font-bold hover:opacity-90 transition-opacity"
               >
                 🎮 Minigames
-              </link>
-              
+              </Link>
+
             </CardContent>
           </Card>
         )}
