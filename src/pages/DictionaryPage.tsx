@@ -4,7 +4,9 @@ import DashboardLayout from "@/components/DashboardLayout";
 export default function DictionaryPage() {
   return (
     <DashboardLayout>
-      <Dictionary />
+      <div className="animate-slide-up">
+        <Dictionary />
+      </div>
     </DashboardLayout>
   );
 }

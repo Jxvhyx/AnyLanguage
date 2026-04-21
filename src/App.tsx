@@ -24,6 +24,7 @@ import DictionaryPage from "./pages/DictionaryPage";
 import QuizPage from "./pages/QuizPage";
 import MiniGamesPage from "./pages/MiniGamesPage";
 import ImageGamePage from "./pages/ImageGamePage";
+import AccountPage from "./pages/AccountPage";
 
 const queryClient = new QueryClient();
 
@@ -52,7 +53,8 @@ const App = () => (
             <Route path="/dictionary" element={<ProtectedRoute> <DictionaryPage /> </ProtectedRoute>} />
             <Route path="/quiz" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
             <Route path="/minigames" element={<ProtectedRoute><MiniGamesPage /></ProtectedRoute>} />
-            <Route path="/image-game" element={ <ProtectedRoute> <ImageGamePage /> </ProtectedRoute>} />
+            <Route path="/image-game" element={<ProtectedRoute> <ImageGamePage /> </ProtectedRoute>} />
+            <Route path="/account"element={<ProtectedRoute><AccountPage /></ProtectedRoute>}/>            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

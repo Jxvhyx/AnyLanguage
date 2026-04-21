@@ -57,7 +57,7 @@ export default function QuizPage() {
 
     return (
         <DashboardLayout>
-            <div className="space-y-6">
+            <div className="animate-slide-up space-y-6">
                 <div>
                     <h1 className="text-3xl font-display text-foreground">🎮 Quiz</h1>
                     <p className="text-muted-foreground font-body">

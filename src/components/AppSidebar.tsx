@@ -18,6 +18,7 @@ const navByRole = {
     { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
     { to: "/minigames", icon: Gamepad2, label: "Minigames" },
     { to: "/reports", icon: FileText, label: "Reports" },
+    { to: "/account", icon: Settings, label: "My Account" }
   ],
   teacher: [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
@@ -27,6 +28,7 @@ const navByRole = {
     { to: "/progress", icon: BarChart3, label: "Progress" },
     { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
     { to: "/reports", icon: FileText, label: "Reports" },
+    { to: "/account", icon: Settings, label: "My Account" }
   ],
   parent: [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
@@ -34,6 +36,7 @@ const navByRole = {
     { to: "/parent-progress", icon: BarChart3, label: "Progress" },
     { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
     { to: "/reports", icon: FileText, label: "Reports" },
+    { to: "/account", icon: Settings, label: "My Account" }
   ],
   student: [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
@@ -41,7 +44,10 @@ const navByRole = {
     { to: "/lessons", icon: BookOpen, label: "Lessons" },
     { to: "/dictionary", icon: BookOpen, label: "Dictionary" },
     { to: "/progress", icon: BarChart3, label: "My Progress" },
-    { to: "/minigames", icon: Gamepad2, label: "Minigames" }],
+    { to: "/minigames", icon: Gamepad2, label: "Minigames" },
+    { to: "/account", icon: Settings, label: "My Account" }
+  ],
+
 };
 
 export default function AppSidebar() {

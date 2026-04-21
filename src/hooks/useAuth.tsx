@@ -4,13 +4,16 @@ import type { User, Session } from "@supabase/supabase-js";
 
 type AppRole = "admin" | "teacher" | "parent" | "student";
 
+const publicRoles = ["student", "parent", "teacher"] as const;
+type PublicRole = typeof publicRoles[number];
+
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   role: AppRole | null;
   profile: { id: string; full_name: string; avatar_url: string | null } | null;
   loading: boolean;
-  signUp: (email: string, password: string, fullName: string, role: AppRole) => Promise<void>;
+  signUp: (email: string, password: string, fullName: string, role: PublicRole) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }
@@ -29,43 +32,56 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       supabase.from("profiles").select("id, full_name, avatar_url").eq("id", userId).maybeSingle(),
       supabase.from("user_roles").select("role").eq("user_id", userId).maybeSingle(),
     ]);
+
     if (profileRes.data) setProfile(profileRes.data);
-    if (roleRes.data) setRole(roleRes.data.role as AppRole);
+
+    if (roleRes.data) {
+      setRole(roleRes.data.role as AppRole);
+    } else {
+      setRole(null);
+    }
   };
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
+
       if (session?.user) {
         setTimeout(() => fetchUserData(session.user.id), 0);
       } else {
         setProfile(null);
         setRole(null);
       }
+
       setLoading(false);
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
+
       if (session?.user) {
         fetchUserData(session.user.id);
       }
+
       setLoading(false);
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, fullName: string, role: AppRole) => {
+  const signUp = async (email: string, password: string, fullName: string, role: PublicRole) => {
+    const safeRole: PublicRole = publicRoles.includes(role) ? role : "student";
+
     const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
-        data: { full_name: fullName, role },
+        data: { full_name: fullName, role: safeRole },
       },
     });
+
     if (error) throw error;
   };
 

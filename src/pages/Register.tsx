@@ -8,13 +8,12 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { BookOpen, GraduationCap, Users, Baby, Shield } from "lucide-react";
 
-type AppRole = "student" | "parent" | "teacher" | "admin";
+type AppRole = "student" | "parent" | "teacher";
 
 const roles: { value: AppRole; label: string; icon: React.ReactNode; color: string }[] = [
   { value: "student", label: "Student", icon: <GraduationCap className="w-6 h-6" />, color: "bg-info text-info-foreground" },
   { value: "parent", label: "Parent", icon: <Baby className="w-6 h-6" />, color: "bg-success text-success-foreground" },
   { value: "teacher", label: "Teacher", icon: <Users className="w-6 h-6" />, color: "bg-accent text-accent-foreground" },
-  { value: "admin", label: "Admin", icon: <Shield className="w-6 h-6" />, color: "bg-primary text-primary-foreground" },
 ];
 
 

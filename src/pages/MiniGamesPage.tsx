@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function MiniGamesPage() {
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="animate-slide-up space-y-6">
         <Link
           to="/minigames"
           className="text-sm text-muted-foreground hover:text-foreground transition"
