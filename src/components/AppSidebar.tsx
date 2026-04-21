@@ -50,13 +50,12 @@ export default function AppSidebar() {
   const items = navByRole[role || "student"];
 
   return (
-    <aside className="w-64 min-h-screen bg-sidebar flex flex-col shrink-0">
-      <div className="p-6">
-        <Link to="/dashboard" className="flex items-center gap-3">
-          <img src={logo} alt="AnyLanguage logo" className="w-10 h-10 rounded-xl object-cover" />
-          <span className="text-xl font-display text-sidebar-foreground">AnyLanguage</span>
-        </Link>
-      </div>
+    <aside className="w-64 h-screen bg-sidebar flex flex-col shrink-0 sticky top-0">      <div className="p-6">
+      <Link to="/dashboard" className="flex items-center gap-3">
+        <img src={logo} alt="AnyLanguage logo" className="w-10 h-10 rounded-xl object-cover" />
+        <span className="text-xl font-display text-sidebar-foreground">AnyLanguage</span>
+      </Link>
+    </div>
 
       <nav className="flex-1 px-3 space-y-1">
         {items.map(item => {
