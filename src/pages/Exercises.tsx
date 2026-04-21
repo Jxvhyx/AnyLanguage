@@ -102,7 +102,6 @@ export default function Exercises() {
         .eq("user_id", user.id)
         .eq("member_role", role === "admin" ? "admin" : "teacher");
 
-      // For admin, also get all course groups
       let courseGroups: { id: string; name: string }[] = [];
       if (role === "admin") {
         const { data } = await supabase.from("groups").select("id, name").eq("group_type", "course");
